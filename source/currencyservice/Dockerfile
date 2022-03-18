@@ -2,10 +2,13 @@ FROM node:12-alpine as base
 
 FROM base as builder
 
+RUN node --version
+# RUN apk upgrade
 # Some packages (e.g. @google-cloud/profiler) require additional
 # deps for post-install scripts
 RUN apk add --update --no-cache \
-    python \
+    npm \
+    python3 \
     make \
     g++
 
