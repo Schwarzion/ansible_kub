@@ -1,0 +1,10 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    - name: copy service
+      copy:
+        src: ../../source/shippingservice
+        dest: /opt/
+    - name: build docker image
+      command: docker build /opt/shippingservice/. -t shippingservice:latest

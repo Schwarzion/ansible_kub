@@ -1,0 +1,10 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    - name: copy service
+      copy:
+        src: ../../source/checkoutservice
+        dest: /opt/
+    - name: build docker image
+      command: docker build /opt/checkoutservice/. -t checkoutservice:latest

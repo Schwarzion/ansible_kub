@@ -1,0 +1,32 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    - name: copy service
+      copy:
+        src: ../../source/{{item}}
+        dest: /opt/
+      loop:
+        - adservice
+        - checkoutservice
+        - currencyservice
+        - emailservice
+        - frontend
+        - loadgenerator
+        - paymentservice
+        - productcatalogservice
+        - recommendationservice
+        - shippingservice
+    - name: build docker image
+      command: docker build /opt/{{item}}/. -t {{item}}:latest
+      loop:
+          - adservice
+          - checkoutservice
+          - currencyservice
+          - emailservice
+          - frontend
+          - loadgenerator
+          - paymentservice
+          - productcatalogservice
+          - recommendationservice
+          - shippingservice

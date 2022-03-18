@@ -1,0 +1,18 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    - name: send docker.sh file 
+      copy:
+        src: docker.sh
+        dest: /home/victor/
+    - name: install docker
+      command: sh /home/victor/docker.sh
+      notify: start docker service
+
+  handlers:
+    - name: start docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes

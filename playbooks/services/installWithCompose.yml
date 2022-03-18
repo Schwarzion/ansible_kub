@@ -1,0 +1,14 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    #- name: copy service
+    #  copy:
+    #    src: ../../source/
+    #    dest: /opt/
+    #- name: add docker-compose
+    #  apt:
+    #    name:
+    #      - docker-compose
+    - name: build docker images
+      command: docker-compose -f /opt/docker-compose.yml up

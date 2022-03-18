@@ -2,6 +2,6 @@
 
 Practice project
 Complete architechture containing : 
-- CI
-- CD to docker container
+- CI with jenkins
+- CD playbooks (notified by jenkins)
 - Managed by Kubernetes

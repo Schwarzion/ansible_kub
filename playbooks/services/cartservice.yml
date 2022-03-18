@@ -1,0 +1,10 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    - name: copy service
+      copy:
+        src: ../../source/cartservice
+        dest: /opt/
+    - name: build docker image
+      command: docker build /opt/cartservice/src/. -t cartservice:latest

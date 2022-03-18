@@ -1,0 +1,10 @@
+---
+- hosts: containers
+  become: true
+  tasks:
+    - name: copy service
+      copy:
+        src: ../../source/emailservice
+        dest: /opt/
+    - name: build docker image
+      command: docker build /opt/emailservice/. -t emailservice:latest
